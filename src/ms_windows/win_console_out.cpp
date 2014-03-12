@@ -35,6 +35,7 @@ using boost::locale::conv::between;
 using boost::locale::conv::from_utf;
 #pragma GCC diagnostic pop
 
+#include <cassert>
 #include <exception>
 using std::logic_error;
 // TODO: Use cbegin()/cend() when it becomes available (C++14)
@@ -57,6 +58,7 @@ namespace ms_windows {
 // TODO: Add template parameter to allow for std::wstring return type?
 string ConvertText(char const* strToConv, string const& encTo, string const& encFrom)
 {
+    assert(strToConv != nullptr);
     return between(strToConv, encTo, encFrom);
 }
 
@@ -66,6 +68,7 @@ string ConvertText(char const* strToConv, string const& encTo, string const& enc
 // TODO: Add template parameter to allow for std::wstring return type?
 string ConvertText(wchar_t const* strToConv, string const& encTo, string const&)
 {
+    assert(strToConv != nullptr);
     return from_utf(strToConv, encTo);
 }
 

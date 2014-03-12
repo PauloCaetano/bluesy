@@ -36,6 +36,7 @@
 
 #include "windows.h"
 
+#include <cassert>
 #include <locale>
 #include <string>
 #include <sstream>
@@ -75,6 +76,8 @@ std::string GetEncoding(UINT codePage);
 template <typename CharT>
 std::string ConvertOutput(CharT const* s)
 {
+    assert(s != nullptr);
+
 #ifndef PCBLUESY_UNIT_TEST
     std::string enc = GetEncoding(GetConsoleOutputCP());
 #else
