@@ -11,10 +11,20 @@ There is no grandiose unified vision, I'll be adding to it as the need arises.
 - gcc, mingw on Windows (tested with 4.7+)
 - ICU (tested with 51+)
 - Boost (tested with 1.53+)
+    - Exception
     - Locale
+    - Program Options
     - Test
 
 ## Module List
+
+### App Configuration
+
+- prog_options
+
+ Defines a class template that deals with the generic part of using Boost
+Program Options. The class template is then parametrized with another class,
+which will take care of its app's specific options.
 
 ### MS Windows
 
