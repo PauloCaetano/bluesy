@@ -47,6 +47,8 @@
 namespace pt { namespace pcaetano { namespace bluesy {
 namespace ms_windows {
 
+
+
 #ifdef PCBLUESY_MSWINDCON_DEFAULT_WCHART
 using DefaultCharT = wchar_t;
 #else

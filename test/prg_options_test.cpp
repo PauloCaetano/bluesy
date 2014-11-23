@@ -3,7 +3,7 @@
 #include "app_config/prog_options.h"
 using pt::pcaetano::bluesy::config::AppOptions;
 #include "app_config/appconfigexception.h"
-using pt::pcaetano::bluesy::config::config_error_string;
+using pt::pcaetano::bluesy::config::error_message;
 using pt::pcaetano::bluesy::config::ConfigInvalidOption;
 using pt::pcaetano::bluesy::config::ConfigRequiredOptionMissing;
 
@@ -66,7 +66,7 @@ void TestAppOptions::Validate()
         return;
     }
 
-    BOOST_THROW_EXCEPTION(ConfigInvalidOption() << config_error_string("Operacao nao reconhecida: " + operation));
+    BOOST_THROW_EXCEPTION(ConfigInvalidOption() << error_message("Operacao nao reconhecida: " + operation));
 }
 
 ostream& operator<<(ostream& os, TestAppOptions const& obj)

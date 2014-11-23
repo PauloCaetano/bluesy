@@ -31,13 +31,13 @@
 #include "ms_windows/win_console_out.h"
 using pt::pcaetano::bluesy::ms_windows::GetEncoding;
 using pt::pcaetano::bluesy::ms_windows::ConvertOutput;
+#include "ms_windows/win_exception.h"
+using pt::pcaetano::bluesy::ms_windows::EncodingNotFoundException;
 
 #include <ostream>
 using std::basic_ostream;
 using std::ostream;
 using std::wostream;
-#include <stdexcept>
-using std::logic_error;
 #include <string>
 using std::basic_string;
 using std::string;
@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_CASE(mswcon_get_encoding)
 
 BOOST_AUTO_TEST_CASE(mswcon_get_encoding_not_exists)
 {
-    BOOST_REQUIRE_THROW(GetEncoding(0), logic_error);
+    BOOST_REQUIRE_THROW(GetEncoding(0), EncodingNotFoundException);
 }
 
 char const* origC = "áàâãäéèêëíìîïóòôõöúùûüÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜ£§ºªçÇ«»";

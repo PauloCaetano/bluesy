@@ -154,7 +154,7 @@ AppOptions<SpecificOptions>::AppOptions(int argc, const char* const argv[], char
         catch (po::required_option& ro)
         {
             BOOST_THROW_EXCEPTION(ConfigRequiredOptionMissing() <<
-                config_error_string("Required option missing: " + ro.get_option_name()));
+                error_message("Required option missing: " + ro.get_option_name()));
 
         }
     }

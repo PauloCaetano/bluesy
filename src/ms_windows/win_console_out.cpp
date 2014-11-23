@@ -27,6 +27,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "win_console_out.h"
+#include "win_exception.h"
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
@@ -36,8 +37,6 @@ using boost::locale::conv::from_utf;
 #pragma GCC diagnostic pop
 
 #include <cassert>
-#include <exception>
-using std::logic_error;
 // TODO: Use cbegin()/cend() when it becomes available (C++14)
 #include <iterator>
 using std::begin;
@@ -151,10 +150,11 @@ string GetEncoding(UINT codePage)
     windows_encoding const *e = end(all_windows_encodings);
     windows_encoding const *ptr = std::find(b, e, ref);
 
+    // TODO: Should we really throw an exception here, or just return a default encoding?
     if (ptr == e)
     {
-        //TODO: Create exception for this?
-        throw logic_error("Encoding not found");
+        BOOST_THROW_EXCEPTION(EncodingNotFoundException()
+            << error_message("Could not find encoding for code page") << error_win_uint(codePage));
     }
 
     return ptr->name;
