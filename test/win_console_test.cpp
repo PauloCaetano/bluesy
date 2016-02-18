@@ -1,4 +1,4 @@
-// Copyright (c) 2013-2014, Paulo Caetano
+// Copyright (c) 2013-2016, Paulo Caetano
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -28,8 +28,9 @@
 
 #include <boost/test/unit_test.hpp>
 
+// We go for full inclusion, to simplify testing.
+#define PCBLUESY_MSWINDCON_FULLHEADER
 #include "ms_windows/win_console_out.h"
-using pt::pcaetano::bluesy::ms_windows::GetEncoding;
 using pt::pcaetano::bluesy::ms_windows::ConvertOutput;
 #include "ms_windows/win_exception.h"
 using pt::pcaetano::bluesy::ms_windows::EncodingNotFoundException;
@@ -44,18 +45,6 @@ using std::string;
 using std::wstring;
 
 BOOST_AUTO_TEST_SUITE(mswindows_console)
-
-BOOST_AUTO_TEST_CASE(mswcon_get_encoding)
-{
-    string enc = GetEncoding(850);
-
-    BOOST_REQUIRE_EQUAL(enc, "cp850");
-}
-
-BOOST_AUTO_TEST_CASE(mswcon_get_encoding_not_exists)
-{
-    BOOST_REQUIRE_THROW(GetEncoding(0), EncodingNotFoundException);
-}
 
 char const* origC = "áàâãäéèêëíìîïóòôõöúùûüÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜ£§ºªçÇ«»";
 wchar_t const* origW = L"áàâãäéèêëíìîïóòôõöúùûüÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜ£§ºªçÇ«»";

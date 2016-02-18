@@ -1,4 +1,4 @@
-// Copyright (c) 2014, Paulo Caetano
+// Copyright (c) 2014-2016, Paulo Caetano
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -29,10 +29,13 @@
 #ifndef BASE_EXCEPTION_H
 #define BASE_EXCEPTION_H
 
+#pragma warning(push)
+#pragma warning(disable:4996)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #include <boost/exception/all.hpp>
 #pragma GCC diagnostic pop
+#pragma warning(pop)
 
 namespace pt { namespace pcaetano { namespace bluesy {
 namespace base
